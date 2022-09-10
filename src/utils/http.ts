@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
-import { notification } from 'ant-design-vue';
 
 import { useStore } from '@/store/system/user';
 import { ACCESS_TOKEN } from '@/store/system/user/const';
@@ -30,37 +29,37 @@ const errorHandler = (error: AxiosError) => {
     const userStore = useStore();
     const data = error.response.data as Common.ResponseData<unknown>;
     const token = userStore.token;
-    if (error.response.status === 403) {
-      notification.error({
-        message: '权限不足',
-        description: data.msg,
-      });
-    }
-    if (error.response.status === 401 && !data.data) {
-      notification.error({
-        message: '登录失效',
-        description: data.msg,
-      });
-      const reload = () => {
-        setTimeout(() => {
-          router.push(loginRoutePath);
-        }, 1500);
-      };
-      if (token) {
-        userStore.deleteToken();
-      }
-      reload();
-    }
+    // if (error.response.status === 403) {
+    //   notification.error({
+    //     message: '权限不足',
+    //     description: data.msg,
+    //   });
+    // }
+    // if (error.response.status === 401 && !data.data) {
+    //   notification.error({
+    //     message: '登录失效',
+    //     description: data.msg,
+    //   });
+    //   const reload = () => {
+    //     setTimeout(() => {
+    //       router.push(loginRoutePath);
+    //     }, 1500);
+    //   };
+    //   if (token) {
+    //     userStore.deleteToken();
+    //   }
+    //   reload();
+    // }
   }
   return Promise.reject(error);
 };
 // 响应拦截
 axios.interceptors.response.use((response) => {
   if (response.data?.errorCode !== 10000) {
-    notification.error({
-      message: '请求失败',
-      description: response.data.msg,
-    });
+    // notification.error({
+    //   message: '请求失败',
+    //   description: response.data.msg,
+    // });
     return Promise.reject(response);
   }
   return response.data.data;

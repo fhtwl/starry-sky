@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import setupAtnd from '@/lib/ant-design-vue';
 import router from '@/router';
 import { createPinia } from 'pinia';
 import axios from '@/utils/http';
@@ -13,7 +12,7 @@ app.use(createPinia());
 
 import './permission';
 // import setupSocketIO from './lib/socket.io';
-setupAtnd(app);
+
 // setupSocketIO(app);
 
 app.config.globalProperties.$axios = axios;

@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import Components from 'unplugin-vue-components/vite';
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCompression from 'vite-plugin-compression';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -21,14 +20,7 @@ export default defineConfig({
     // 按需加载
     Components({
       include: [/\.vue$/, /\.tsx$/],
-      resolvers: [
-        AntDesignVueResolver({
-          // 不加载css, 而是手动加载css. 通过手动加载less文件并将less变量绑定到css变量上, 即可实现动态主题色
-          importStyle: false,
-          // 加载所有icon
-          resolveIcons: true,
-        }),
-      ],
+      resolvers: [],
     }),
     viteCompression(),
     createHtmlPlugin({

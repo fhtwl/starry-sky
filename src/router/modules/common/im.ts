@@ -11,11 +11,11 @@ export default [
         name: 'im',
         component: () => import('@/views/Home'),
       },
-      {
-        path: 'square',
-        name: 'square',
-        component: () => import('@/views/Square'),
-      },
+      // {
+      //   path: 'square',
+      //   name: 'square',
+      //   component: () => import('@/views/Square'),
+      // },
     ],
   },
 ];

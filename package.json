@@ -10,13 +10,17 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "ant-design-vue": "^3.2.6",
     "axios": "^0.27.2",
     "md5": "^2.3.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "socket.io-client": "^4.5.2",
     "three": "^0.144.0",
+    "three-effectcomposer": "^0.0.1",
+    "three-forcegraph": "^1.39.5",
+    "three-orbit-controls": "^82.1.0",
+    "three-render-objects": "^1.27.3",
+    "three-spritetext": "^1.6.5",
     "vue": "^3.2.25",
     "vue-cropper": "^1.0.5",
     "vue-router": "^4.0.15"
@@ -29,7 +33,7 @@
     "@types/node": "^17.0.42",
     "@types/nprogress": "^0.2.0",
     "@types/offscreencanvas": "^2019.7.0",
-    "@types/three": "^0.143.2",
+    "@types/three": "^0.144.0",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "@vitejs/plugin-vue": "^2.0.0",
