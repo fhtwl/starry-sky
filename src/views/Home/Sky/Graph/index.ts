@@ -152,25 +152,27 @@ export default class GroupChart {
     this.initCamera();
 
     this.initControls();
-    this.aniamte();
+
     this.initComposer();
+
+    this.initLight();
 
     this.setShaderPass();
     this.setOutlinePass();
     this.setBloomPass();
-    this.initLight();
-
-    // this.aniamte();
+    this.aniamte();
   }
 
   aniamte() {
+    const delta = this.clock.getDelta();
     this.graph!.tickFrame();
     this.tbControls!.update();
-    this.renderer!.render(this.scene!, this.camera!);
+    this.renderer!.render(this.scene, this.camera);
+
+    this.composer.render(delta);
+    this.renderObjs.tick();
     requestAnimationFrame(this.aniamte.bind(this));
 
-    // this.graph?.tickFrame();
-    // this.renderObjs.tick();
     // this.orbitControls?.update();
     // this.tbControls?.update();
     // this.renderer?.render(this.scene, this.camera);
@@ -486,8 +488,13 @@ export default class GroupChart {
    * 设置光效
    */
   setBloomPass() {
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(266, 266), 1, 1, 1);
-
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      1,
+      1,
+      1
+    );
+    bloomPass.renderToScreen = true;
     bloomPass.strength = 0.1;
     bloomPass.radius = 1;
     bloomPass.threshold = 0.1;

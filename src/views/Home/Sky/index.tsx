@@ -45,7 +45,7 @@ export default defineComponent({
             // isFlycenter: true
             isFlycenter: true,
           });
-          console.log(graphChart);
+          console.log(graphChart, graphChart.graph);
         });
 
       // https://static.fhtwl.cc/demo/knowledge-graph/npmdep.json
